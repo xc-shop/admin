@@ -340,7 +340,82 @@ let jsx = (
     { flag ? <p> I am {name} </p> : <p> I am not {name}</p>} 
   </div>
 );
+```
+数组循环
+```js
+let names = ['jomsou', 'marry', 'james']
+let jsx = (
+  <div>
+    { names.map((name, index)=><p key={index}>Hello, I am {name}</p>)}
+  </div>
+);
+```
+### React组件的定义
+```js
+ES5
+function  Component() {
+  return <h1>I am Jomsou</h1>
+}
+ES6
+class ES6component extends React.Component{
+  render(){
+    return <h1>I am Jomsou</h1>
+  }
+}
+ReactDOM.render(
+  <div>
+    <Component/>
+    <ES6component/>
+  </div>,
+  document.getElementById('app')
+);
+```
 
+state：状态，即所有参数
+setState：设置状态变化
+super：继承父组件的this指针
+```js
+class ES6component extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      name: 'Jomsou'
+    }
+  }
+  render(){
+    //用于异步操作
+    setTimeout(() => {
+      this.setState({
+        name: 'Jomsou Can'
+      })
+    }, 2000);
+    return <h1>I am {this.state.name}</h1>
+  }
+}
+ReactDOM.render(
+  <div>
+    {/* <Component/> */}
+    <ES6component/>
+  </div>,
+  document.getElementById('app')
+);
+```
+props: 父组件往子组件里传递东西
+```js
+class ES6component extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return <h1>I am {this.props.name}</h1>
+  }
+}
+ReactDOM.render(
+  <div>
+    <ES6component name="Jomsou STC"/>
+  </div>,
+  document.getElementById('app')
+);
 ```
 
 
