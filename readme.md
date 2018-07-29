@@ -187,23 +187,162 @@ let obj = {
 Object.keys(obj)
 ```
 
-Yarn的第一次使用收获
+### Yarn的第一次使用收获
+
+>yarn+webpak3.0构建项目的过程
 
 yarn init = npm init
+
 yarn = npm install
+
 yarn global add xxx@x.x.x = npm install xxx@x.x.x -g
+
 yarn add xxx@x.x.x = npm install xxx@x.x.x --save
+
 yarn add xxx@x.x.x -dev = npm install xxx@x.x.x --save-dev
+
 yarn remove xxx = npm uninstall xxx --save(-dev)
+
 yarn run xxx = npm run xxx
 
 ```
 yarn init
 yarn add webpack@3.10.0 --save-dev
 yarn add html-webpack-plugin@2.30.1 --save-dev
+yarn add extract-text-webpack-plugin@3.0.2 --save-dev
+yarn add xxxx-loader@x.x.x --dev
 ```
 配置webpack.config.js
+```js
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = {
+  //入口
+  entry: './src/app.jsx',
+  //输出
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
+    filename: 'js/app.js'
+  },
+  //插件
+  plugins: [
+    //处理html文件
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    //独立css
+    new ExtractTextPlugin("css/[name].css"),
+    //提出公共模块
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      filename: 'js/base.js'
+    })
+  ],
+  module: {
+    rules: [{
+        //处理jsx
+        test: /\.jsx$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'react']
+          }
+        }
+      },
+      {
+        //处理css
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ['css-loader']
+        })
+      },
+      {
+        //处理scss
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ['css-loader', 'sass-loader']
+        })
+      },
+      {
+        //图片处理
+        test: /\.(png|jpg|gif)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            name: 'resource/[name].[ext]'
+          }
+        }]
+      },
+      {
+        //字体处理
+        test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            name: 'resource/[name].[ext]'
+          }
+        }]
+      },
+    ]
+  },
+  devServer: {
+  }
+};
+```
+配置package.json编译命令
+```
+  "scripts": {
+    "dev": "node_modules/.bin/webpack-dev-server",
+    "dist": "node_modules/.bin/webpack -p"
+  },
+```
+最后
+```
+yarn dev
+or
+yarn dist
+``` 
+### JSX语法
+style
+```javascript
+let style = {
+  color: 'r'+'ed',
+  fontSize: '30px'
+}
+let jsx = <div style={style}>jsx...</div>;
 ```
 
+
+className
+```javascript
+import './index.scss';
+let jsx = (
+  <div className="jsx">
+  jsx...
+  </div>
+);
 ```
+变量的使用和条件判断
+```javascript
+let name = "Jomsou";
+let flag = false;
+let jsx = (
+  <div>
+    { flag ? <p> I am {name} </p> : <p> I am not {name}</p>} 
+  </div>
+);
+
+```
+
+
+
 

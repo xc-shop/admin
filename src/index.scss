@@ -1,6 +1,9 @@
 body {
     background: #ccc;
     #app {
-        font-size: 100px;
+        .jsx {
+            color: blue;
+            font-size: 60px;
+        }
     }
 }
