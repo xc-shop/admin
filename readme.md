@@ -622,13 +622,65 @@ ReactDOM.render(
 >从生到死
 作用：
 
-Mounting: 挂载阶段
+- Mounting: 挂载阶段
 
-Updating：运行时阶段
+- Updating：运行时阶段
 
-Unmounting：卸载阶段
+- Unmounting：卸载阶段
 
-Error Handling： 错误处理
+- Error Handling： 错误处理
+
+挂载阶段
+```
+constructor
+componentWillMount
+render
+componentDidMount
+```
+
+有更新的情况
+```
+componentWillReceiveProps//如果父组件向子组件传值，执行
+shouldComponentUpdate: 默认是true，可以更新//设置为flase则没有以下步骤
+componentWillUpdate
+render
+componentDidUpdate
+```
+
+componentWillUnmount
+
+#### Router原理及React-Router
+
+历史--栈的形式
+跳转--可传递数据
+事件
+
+常见的Router
+- 页面Router：重新渲染
+```js
+window.location.href="https://www.baidu.com"
+```
+- Hash Router
+```js
+window.loaction = '#hash';
+window.onhashchange = function(){
+  console.log('current hash:', window.location.hash)
+}
+``` 
+- H5 Router
+>包括页面跟hash路由
+```js
+//推进一个状态
+history.pushState('name', 'title', '/path');
+//替换一个状态
+history.replaceState('name', 'title', '/path');
+//popstate
+window.onpopstate = function(){
+  console.log(window.location.href);
+  console.log(windos.location.pathname);
+}
+```
+
 
 
 

@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   //入口
-  entry: './src/app.jsx',
+  entry: './src/index.jsx',
   //输出
   output: {
     path: path.resolve(__dirname, 'dist'),
