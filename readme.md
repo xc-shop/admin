@@ -417,6 +417,218 @@ ReactDOM.render(
   document.getElementById('app')
 );
 ```
+#### 事件处理
+
+方式1：
+
+1、按钮button点击后，this会改变，所以需要在constructor中加`this.handleClick = this.handleClick.bind(this);`
+```js
+handleClick(){
+    this.setState({
+        age: this.state.age+1
+    })
+}
+render(){
+    return (
+        <div>
+        <h1>I am {this.state.name}</h1>
+        <p>I am {this.state.age} years</p>
+        <button onClick={this.handleClick}>加一岁</button>
+        </div>
+    )
+}
+```
+方式2：
+```js
+onValChange(e){
+    this.setState({
+      age: e.target.value
+    })
+  }
+  render(){
+    return (
+      <div>
+        <h1>I am {this.state.name}</h1>
+        <p>I am {this.state.age} years</p>
+        <input type="text" onChange={(e)=>this.onValChange(e)} />
+      </div>
+    )
+  }
+```
+#### 容器式组件和单纯组件
+```js
+class Title extends React.Component {
+  render(props){
+    // return <h1>{this.props.title}</h1>
+    return <h1>{this.props.children}</h1>
+  }
+}
+class App extends React.Component {
+  render(){
+    return (
+      <div>
+      {/* 容器式组件 */}
+        {/* <Title title="App Title"/> */}
+        <Title>
+          <span>App Span</span>
+          <a href="">link</a>
+        </Title>
+        <hr/>
+        {/* 单纯组件 */}
+        <Component/>
+      </div>
+    )
+  }
+}
+```
+#### 父组件向子组件传值
+>用props传值
+```js
+class Title extends React.Component {
+  render(props){
+    <h1>{this.props.title}</h1>
+  }
+}
+class Father extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return (
+      <div}>
+        <Title title="App Title"/>
+      </div>
+    )
+  }
+}
+```
+
+#### 子组件向父组件传值
+>通过回调函数
+```js
+class Child extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  handleClick(){
+    this.props.onChangeColor('red');
+  }
+  render(){
+    return (
+      <div>
+        <h1>父组件的背景颜色：{this.props.bgColor}</h1>
+        <button onClick={(e)=>this.handleClick(e)}>改变颜色</button>
+      </div>
+    )
+  }
+}
+class Title extends React.Component {
+  render(props){
+    return <h1>{this.props.children}</h1>
+  }
+}
+class Father extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      bgColor: '#999'
+    }
+  }
+  onChangeColor(color){
+    this.setState({
+      bgColor: color
+    })
+  }
+  render(){
+    return (
+      <div style={{background: this.state.bgColor}}>
+        <Child bgColor={this.state.bgColor} onChangeColor={color=>this.onChangeColor(color)}/> 
+      </div>
+    )
+  }
+}
+ReactDOM.render(
+  <div>
+    <Father/>
+  </div>,
+  document.getElementById('app')
+);
+```
+#### 兄弟组件相互传值
+>状态提升——先提升到父组件上，再到兄弟组件里
+```js
+class Child1 extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  handleClick(){
+    this.props.changeChild2Color('red');
+  }
+  render(){
+    return (
+      <div>
+        <h1>child1：{this.props.bgColor}</h1>
+        <button onClick={(e)=>this.handleClick(e)}>改变颜色</button>
+      </div>
+    )
+  }
+}
+class Child2 extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return (
+      <div style={{background: this.props.bgColor}}>
+        <h1>Child2：{this.props.bgColor}</h1>
+      </div>
+    )
+  }
+}
+class Title extends React.Component {
+  render(props){
+    return <h1>{this.props.children}</h1>
+  }
+}
+class Father extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      bgColor: '#999'
+    }
+  }
+  onChangeChild2Color(color){
+    this.setState({
+      bgColor: color
+    })
+  }
+  render(){
+    return (
+      <div>
+        <Child1 changeChild2Color={(color)=>this.onChangeChild2Color(color)}/> 
+        <Child2 bgColor={this.state.bgColor}/> 
+      </div>
+    )
+  }
+}
+ReactDOM.render(
+  <div>
+    <Father/>
+  </div>,
+  document.getElementById('app')
+);
+```
+#### 生命周期
+>从生到死
+作用：
+
+Mounting: 挂载阶段
+
+Updating：运行时阶段
+
+Unmounting：卸载阶段
+
+Error Handling： 错误处理
 
 
 
