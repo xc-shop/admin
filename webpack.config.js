@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   //入口
-  entry: './src/index.jsx',
+  entry: './src/router.jsx',
   //输出
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -79,5 +79,7 @@ module.exports = {
     ]
   },
   devServer: {
+    open: true,
+    port: 8080,
   }
 };
