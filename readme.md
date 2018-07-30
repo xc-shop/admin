@@ -681,7 +681,7 @@ window.onpopstate = function(){
   console.log(windos.location.pathname);
 }
 ```
-Hash Router和BrowserRouter
+HashRouter和BrowserRouter
 
 ```js
 import React from 'react';
