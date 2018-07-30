@@ -74,7 +74,7 @@ var obj = {
 obj.a();//执行obj中的a()函数
 obj.a;//函数本身
 ```
-![](./images/this02.png)
+![](https://github.com/Zenquan/reactAdmin/blob/master/images/this02.PNG)
 
 箭头函数
 - 没有独立的作用域，即没有自己的this，指向obj的作用域window
@@ -92,7 +92,7 @@ var obj = {
 obj.b();
 obj.a();
 ```
-![](./images/this.png)
+![](https://github.com/Zenquan/reactAdmin/blob/master/images/this.PNG)
 
 - 不能做构造函数
 ```javascript
@@ -620,6 +620,7 @@ ReactDOM.render(
 ```
 #### 生命周期
 >从生到死
+
 作用：
 
 - Mounting: 挂载阶段
@@ -733,11 +734,11 @@ ReactDOM.render(
     , document.getElementById('app'));
 
 ```
-![](./images/BrowserRouter.png)
+![](https://github.com/Zenquan/reactAdmin/blob/master/images/HashRouter.PNG)
 
 如果把hashRouter改成BrowserRouter，则变成
 
-![](./images/BrowserRouter.png)
+![](https://github.com/Zenquan/reactAdmin/blob/master/images/BrowserRouter.PNG)
 
 
 
