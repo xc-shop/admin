@@ -5,12 +5,18 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   //入口
-  entry: './src/router.jsx',
+  entry: './src/app.jsx',
   //输出
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
     filename: 'js/app.js'
+  },
+  resolve: {
+    alias: {
+      pages: path.resolve(__dirname, 'src/pages'),
+      component: path.resolve(__dirname, 'src/component')
+    }
   },
   //插件
   plugins: [
@@ -80,6 +86,9 @@ module.exports = {
   },
   devServer: {
     open: true,
-    port: 8080,
+    port: 8086,
+    historyApiFallback: {
+      index: '/dist/index.html'
+    }
   }
 };
