@@ -1,69 +1,36 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 class TopNav extends React.Component {
     constructor(props) {
         super(props);
     }
+    //退出登录
     render() {
         return (
-            <nav className="navbar navbar-default top-navbar" role="navigation">
+            <nav className="navbar navbar-default top-navbar">
                 <div className="navbar-header">
-                    <a className="navbar-brand" href="index.html"><b>In</b>sight</a>
+                    <Link className="navbar-brand" to='/'><b>HAPPY</b>MMALL</Link>
                 </div>
 
                 <ul className="nav navbar-top-links navbar-right">
                     <li className="dropdown">
-                        <a className="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                            <i className="fa fa-envelope fa-fw"></i> <i className="fa fa-caret-down"></i>
+                        <a className="dropdown-toggle" href="javascript:;">
+                        <i className="fa fa-user fa-fw"></i> 
+                            <span>欢迎，adminxxx</span>
+                        <i className="fa fa-caret-down"></i>    
                         </a>
-                        <ul className="dropdown-menu dropdown-messages">
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>John Doe</strong>
-                                        <span className="pull-right text-muted">
-                                            <em>Today</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
-                                </a>
+                        <ul className="dropdown-menu dropdown-user">
+                            <li><a href="#"><i className="fa fa-user fa-fw"></i><span>用户空间</span> </a>
+                            </li>
+                            <li><a href="#"><i className="fa fa-gear fa-fw"></i><span>设置</span> </a>
                             </li>
                             <li className="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>John Smith</strong>
-                                        <span className="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</div>
-                                </a>
-                            </li>
-                            <li className="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>John Smith</strong>
-                                        <span className="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem Ipsum has been the industry's standard dummy text ever since the...</div>
-                                </a>
-                            </li>
-                            <li className="divider"></li>
-                            <li>
-                                <a className="text-center" href="#">
-                                    <strong>Read All Messages</strong>
-                                    <i className="fa fa-angle-right"></i>
-                                </a>
+                            <li><a href="#"><i className="fa fa-sign-out fa-fw"></i><span onClick={()=>{this.onLogout()}}>退出登录</span></a>
                             </li>
                         </ul>
-
                     </li>
 
-                    <li className="dropdown">
+                    {/* <li className="dropdown">
                         <a className="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                             <i className="fa fa-tasks fa-fw"></i> <i className="fa fa-caret-down"></i>
                         </a>
@@ -200,9 +167,9 @@ class TopNav extends React.Component {
                             </li>
                         </ul>
 
-                    </li>
+                    </li> */}
 
-                    <li className="dropdown">
+                    {/* <li className="dropdown">
                         <a className="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                             <i className="fa fa-user fa-fw"></i> <i className="fa fa-caret-down"></i>
                         </a>
@@ -216,7 +183,7 @@ class TopNav extends React.Component {
                             </li>
                         </ul>
 
-                    </li>
+                    </li> */}
 
                 </ul>
             </nav>

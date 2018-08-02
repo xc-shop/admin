@@ -42,19 +42,6 @@ class SideNav extends React.Component {
                                 </li>
                                 <li>
                                     <a href="#">Second Level Link<span className="fa arrow"></span></a>
-                                    <ul className="nav nav-third-level collapse">
-                                        <li>
-                                            <a href="#">Third Level Link</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Link</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Link</a>
-                                        </li>
-
-                                    </ul>
-
                                 </li>
                             </ul>
                         </li>
