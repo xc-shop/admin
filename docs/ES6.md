@@ -184,21 +184,64 @@ let obj = {
 }
 Object.keys(obj)
 ```
+#### Symbol
+>一种基本的数据类型，创建后的值是唯一的
+
+1、Symbol的创建
+
+```js
+var sy = Symbol(value)
+```
+
+2、Symbol有toString方法
+
+```js
+console.log(Symbol('1').toString())//'Symbol(1)'
+```
+
+3、Symbol可以转化成boolean
+
+```js
+console.log(!Symbol);//Symbol可以转化成boolean
+```
+
+4、Symbol不能转化成数字
+```js
+console.log(Symbol(1)+1);//error
+```
+5、相同的key值的Symbol.for创建symbol相等
+```js
+let zf2 = Symbol.for('zhufeng');
+let zf3 = Symbol.for('zhufeng');
+console.log(zf2==zf3)
+```
+6、Symbol.keyFor只能找出有Symbol.for创建的symbol
+```js
+let zf2 = Symbol.for('zhufeng');
+let zf3 = Symbol.for('zhufeng');
+console.log(zf2==zf3)//相同的key值的Symbol.for创建symbol相等
+console.log(Symbol.keyFor(zf2));
+console.log(Symbol.keyFor(sy1));//Symbol.keyFor只能找出有Symbol.for创建的symbol
+```
+eg:
+
+```js
 var sy1 = Symbol();//Symbol的创建， var sy = Symbol(value)
-        var sy2 = Symbol();
-        console.log(typeof sy1);
-        console.log(sy1 == sy2);
-        let obj = {
-            sy1: 'haha',
-            [sy1]: 'zf'
-        };
-        obj[sy2] = 'zf';
-        console.log(obj);
-        //console.log(Symbol(1)+1);
-        console.log(!Symbol);//Symbol可以转化成boolean
-        console.log(Symbol('1').toString())//Symbol由toString方法
-        let zf2 = Symbol.for('zhufeng');
-        let zf3 = Symbol.for('zhufeng');
-        console.log(zf2==zf3)//相同的key值的Symbol.for创建symbol相等
-        console.log(Symbol.keyFor(zf2));
-        console.log(Symbol.keyFor(sy1));//Symbol.keyFor只能找出有Symbol.for创建的symbol
+var sy2 = Symbol();
+console.log(typeof sy1);
+console.log(sy1 == sy2);
+let obj = {
+    sy1: 'haha',
+    [sy1]: 'zf'
+};
+obj[sy2] = 'zf';
+console.log(obj);
+//console.log(Symbol(1)+1);
+console.log(!Symbol);//Symbol可以转化成boolean
+console.log(Symbol('1').toString())//Symbol有toString方法
+let zf2 = Symbol.for('zhufeng');
+let zf3 = Symbol.for('zhufeng');
+console.log(zf2==zf3)//相同的key值的Symbol.for创建symbol相等
+console.log(Symbol.keyFor(zf2));
+console.log(Symbol.keyFor(sy1));//Symbol.keyFor只能找出有Symbol.for创建的symbol
+```
