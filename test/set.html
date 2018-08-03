@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr1 = [1, 2, 3, 4, 5];
+        console.log(arr1);
+        var s1 = new Set([1, 2, 3, 4, 5]);
+        var s2 = new Set("12345");
+        console.log(s1);
+        console.log(s2);
+        function fn(){
+            console.log(new Set(arguments));
+        }
+        fn(1, 2, 3, 4, 5);
+        function unique(arr){
+            var arrSet = new Set(arr);
+            return Array.from(arrSet);
+        }
+        console.log(unique([1, 1, 2, 5, 2, 5, 6, 5]));//[1, 2, 5, 6]
+        s1.add('jomsou');
+        s1.add(1);
+        console.log(s1);
+        var b = s1.delete(1);
+        var c = s1.delete(10);
+        console.log(b+'   '+ c+'   '+s1);
+        console.log(s1.has(5));
+        // s1.forEach((item, value, entries)=>{
+        //     console.log(item, value, entries);
+        // })
+        for(var key of s1.keys()){
+            console.log(key);
+        }
+        for(var val of s1.values()){
+            console.log(val);
+        }
+        for(var entrie of s1.entries()){
+            console.log(entrie);
+        }
+        console.log(s1.clear())
+    </script>
+</body>
+</html>

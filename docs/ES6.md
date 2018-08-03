@@ -245,3 +245,113 @@ console.log(zf2==zf3)//相同的key值的Symbol.for创建symbol相等
 console.log(Symbol.keyFor(zf2));
 console.log(Symbol.keyFor(sy1));//Symbol.keyFor只能找出有Symbol.for创建的symbol
 ```
+
+#### Set
+1、类似数组 只有value 没有键key
+
+![](../images/set.png)
+
+2、通过构造函数方式创建一个Set实例
+
+```js
+var s1 = new Set([1, 2, 3, 4, 5]);
+var s2 = new Set("12345");
+```
+3、参数是一个数组（或者是类似数组只要是有iterable接口）
+
+4、有iterable接口： 数组、arguments、元素集合、Set、Map、字符串
+```js
+var arr1 = [1, 2, 3, 4, 5];
+console.log(arr1);
+var s1 = new Set([1, 2, 3, 4, 5]);
+var s2 = new Set("12345");
+console.log(s1);
+console.log(s2);
+function fn(){
+    console.log(new Set(arguments));
+}
+fn(1, 2, 3, 4, 5);
+```
+
+5、会默认去重
+
+```js
+function unique(arr){
+    var arrSet = new Set(arr);
+    return Array.from(arrSet);
+    //return [...new Set(arr)];
+}
+console.log(unique([1, 1, 2, 5, 2, 5, 6, 5]));//[1, 2, 5, 6]
+```
+
+6、size->个数
+
+add->如果之前没有，则加上，有就不加，返回增加后的Set实例 （可以实现链式写法）,参数一次一个
+
+clear->情况， 没有返回值，undefined，没有参数
+
+delete->删除，返回值是布尔值  如果里面有这一项删除成功true， 没有这一项删除失败false
+
+has->判断有没有此项，返回布尔值
+```js
+s1.add('jomsou');
+s1.add(1);
+console.log(s1);
+var b = s1.delete(1);
+var c = s1.delete(10);
+console.log(b+'   '+ c+'   '+s1);
+console.log(s1.has(5));
+```
+
+forEach->遍历
+
+Set实例只有value没有key
+
+item，index: 当前项value
+
+entires： 当前Set实例
+```js
+s1.forEach((item, value, entries)=>{
+    console.log(item, value, entries);
+})
+```
+
+keys->遍历接口  
+
+key： 仍然是value 
+
+values 
+
+entries->[item, val]
+
+```js
+for(var key of s1.keys()){
+    console.log(key);
+}
+for(var val of s1.values()){
+    console.log(val);
+}
+for(var entrie of s1.entries()){
+    console.log(entrie);
+}
+console.log(s1.clear())
+```
+
+应用
+```js
+//并集
+function add(arr1, arr2){
+    return [...new Set([...arr1, ...arr2])];
+}
+console.log(add(arr1, arr2));
+//交集
+function same(arr1, arr2){
+    return arr1.filter(item=>arr2.includes(item));
+}
+console.log(same(arr1, arr2));
+//差集
+function diff(arr1, arr2){
+    return add(arr1, arr2).filter(item=>!same(arr1, arr2).includes(item))
+}
+console.log(diff(arr1, arr2));
+```

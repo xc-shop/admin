@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr1 = [1, 2, 3, 4, 5, 6, 7, 8];
+        var arr2 = [1, 2, 4, 2, 1, 5, 8, 8];
+
+        function add(arr1, arr2){
+            return [...new Set([...arr1, ...arr2])];
+        }
+        console.log(add(arr1, arr2));
+        function same(arr1, arr2){
+            return arr1.filter(item=>arr2.includes(item));
+        }
+        console.log(same(arr1, arr2));
+        function diff(arr1, arr2){
+            return add(arr1, arr2).filter(item=>!same(arr1, arr2).includes(item))
+        }
+        console.log(diff(arr1, arr2));
+    </script>
+</body>
+</html>
