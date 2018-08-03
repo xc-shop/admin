@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var sy1 = Symbol();//Symbol的创建， var sy = Symbol(value)
+        var sy2 = Symbol();
+        console.log(typeof sy1);
+        console.log(sy1 == sy2);
+        let obj = {
+            sy1: 'haha',
+            [sy1]: 'zf'
+        };
+        obj[sy2] = 'zf';
+        console.log(obj);
+        //console.log(Symbol(1)+1);
+        console.log(!Symbol);//Symbol可以转化成boolean
+        console.log(Symbol('1').toString())//Symbol由toString方法
+        let zf2 = Symbol.for('zhufeng');
+        let zf3 = Symbol.for('zhufeng');
+        console.log(zf2==zf3)//相同的key值的Symbol.for创建symbol相等
+        console.log(Symbol.keyFor(zf2));
+        console.log(Symbol.keyFor(sy1));//Symbol.keyFor只能找出有Symbol.for创建的symbol
+    </script>
+</body>
+</html>
