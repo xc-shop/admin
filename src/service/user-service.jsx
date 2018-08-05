@@ -10,6 +10,12 @@ class User {
             data: loginInfo
         })
     }
+    logout(){
+        return _Util.request({
+            type: 'post',
+            url: '/user/logout.do'
+        })
+    }
     //检查登录接口的数据是否合法
     checkLoginInfo(loginInfo){
         let username = $.trim(loginInfo.username),
