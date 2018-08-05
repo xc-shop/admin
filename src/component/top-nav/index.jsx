@@ -9,7 +9,7 @@ class TopNav extends React.Component {
         return (
             <nav className="navbar navbar-default top-navbar">
                 <div className="navbar-header">
-                    <Link className="navbar-brand" to='/'><b>HAPPY</b>MMALL</Link>
+                    <Link className="navbar-brand" to='/'><b>小菜水果店</b></Link>
                 </div>
 
                 <ul className="nav navbar-top-links navbar-right">
