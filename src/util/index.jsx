@@ -26,6 +26,15 @@ class Util {
     doLogin(){
         window.location.href='/login?redirect='+ encodeURIComponent(window.location);
     }
+    getUrlParam(name){
+        let queryString = window.location.search.split('?')[1]||'',
+            reg = new RegExp('(^|&)'+name+'=([^&]*)(&|$)'),
+            result = queryString.match(reg);
+            return result ? decodeURIComponent(result[2]): null;
+    }
+    errorTips(errMsg){
+        alert(errMsg||'这里那里不对')
+    }
 }
 
 export default Util;

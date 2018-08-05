@@ -16,7 +16,8 @@ module.exports = {
     alias: {
       pages: path.resolve(__dirname, 'src/pages'),
       component: path.resolve(__dirname, 'src/component'),
-      util: path.resolve(__dirname, 'src/util')
+      util: path.resolve(__dirname, 'src/util'),
+      service: path.resolve(__dirname, 'src/service')
     }
   },
   //插件
@@ -92,10 +93,14 @@ module.exports = {
     historyApiFallback: {
       index: '/dist/index.html'
     },
-    proxy: {
-      '/manage': {
-        target: 'http://admintest.happymmall.com',
-        changeOrigin: true
+    proxy : {
+      '/manage' : {
+          target: 'http://admintest.happymmall.com',
+          changeOrigin : true
+      },
+      '/user/logout.do' : {
+          target: 'http://admintest.happymmall.com',
+          changeOrigin : true
       }
     }
   }

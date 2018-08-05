@@ -1,7 +1,9 @@
 import React from 'react';
 import Util from 'util/index.jsx';
+import User from 'service/user-service.jsx'
 
-const _Util = new Util;
+const _Util = new Util();
+const _user = new User();
 
 import './index.scss'
 class Login extends React.Component {
@@ -9,9 +11,14 @@ class Login extends React.Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            redirect: _Util.getUrlParam('redirect')||'/'
         }
     }
+    componentWillMount() {
+        document.title = '登录 - 小菜水果店';
+    }
+
     onUserInputChange(e){
         let inputValue = e.target.value, 
             inputName = e.target.name;
@@ -19,20 +26,27 @@ class Login extends React.Component {
             [inputName]: inputValue
         })
     }
+    onInputKeyUp(e){
+        if(e.keyCode===13){
+            this.onSubmit();
+        }
+    }
     //提交表单
     onSubmit(){
-        _Util.request({
-            type: 'psot',
-            url: '/manage/user/login.do',
-            data: {
-                username: this.state.username,
-                password: this.state.password
-            }
-        }).then((res)=>{
-
-        }, (err)=>{
-
-        })
+        let loginInfo = {
+            username: this.state.username,
+            password: this.state.password
+        },
+        checkResult = _user.checkLoginInfo(loginInfo);
+        if(checkResult.status){
+            _user.login(loginInfo).then((res)=>{
+                this.props.history.push(this.state.redirect);
+            }, (errMsg)=>{
+                _Util.errorTips(errorMsg)
+            })
+        }else {
+            _Util.errorTips(checkResult.msg);
+        }     
     }
     render() {
         return (
@@ -47,6 +61,7 @@ class Login extends React.Component {
                                     name="username"
                                     className="form-control" 
                                     placeholder="用户名" 
+                                    onKeyUp={e=>this.onInputKeyUp(e)}
                                     onChange={e=>this.onUserInputChange(e)}/>
                             </div>
                             <div className="form-group">
@@ -54,6 +69,7 @@ class Login extends React.Component {
                                     name="password"
                                     className="form-control" 
                                     placeholder="密码" 
+                                    onKeyUp={e=>this.onInputKeyUp(e)}
                                     onChange={e=>this.onUserInputChange(e)}/>
                             </div>
                             <button className="btn btn-lg btn-block btn-primary"
