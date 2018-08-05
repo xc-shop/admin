@@ -14,7 +14,7 @@ class SideNav extends React.Component {
                             <a className="active-menu" href="dist/index.html"><i className="fa fa-dashboard"></i>首页</a>
                         </li>
                         <li>
-                            <a href="ui-elements.html"><i className="fa fa-desktop"></i>商品<span className="fa arrow"></span></a>
+                            <a href="#product"><i className="fa fa-desktop"></i>商品<span className="fa arrow"></span></a>
                             <ul className="nav nav-second-level collapse">
                                 <li>
                                     <a href="#">商品管理</a>
@@ -25,37 +25,21 @@ class SideNav extends React.Component {
                             </ul>
                         </li>
                         <li>
-                            <a href="chart.html"><i className="fa fa-bar-chart-o"></i>数据分析</a>
-                        </li>
-                        {/* <li>
-                            <a href="tab-panel.html"><i className="fa fa-qrcode"></i> Tabs &amp; Panels</a>
-                        </li>
-
-                        <li>
-                            <a href="table.html"><i className="fa fa-table"></i> Responsive Tables</a>
+                            <a href="#product-category"><i className="fa fa-sitemap"></i>订单<span className="fa arrow"></span></a>
+                            <ul className="nav nav-second-level collapse">
+                                <li>
+                                    <a href="#">订单管理</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <a href="form.html"><i className="fa fa-edit"></i> Forms </a>
-                        </li> */}
-
-
-                        <li>
-                            <a href="#product-manager"><i className="fa fa-sitemap"></i>用户<span className="fa arrow"></span></a>
+                            <a href="#user-category"><i className="fa fa-sitemap"></i>用户<span className="fa arrow"></span></a>
                             <ul className="nav nav-second-level collapse">
                                 <li>
                                     <a href="#">用户管理</a>
                                 </li>
-                                {/* <li>
-                                    <a href="#">Second Level Link</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Link<span className="fa arrow"></span></a>
-                                </li> */}
                             </ul>
                         </li>
-                        {/* <li>
-                            <a href="empty.html"><i className="fa fa-fw fa-file"></i> Empty Page</a>
-                        </li> */}
                     </ul>
 
                 </div>

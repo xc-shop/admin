@@ -15,7 +15,8 @@ module.exports = {
   resolve: {
     alias: {
       pages: path.resolve(__dirname, 'src/pages'),
-      component: path.resolve(__dirname, 'src/component')
+      component: path.resolve(__dirname, 'src/component'),
+      util: path.resolve(__dirname, 'src/util')
     }
   },
   //插件
@@ -90,6 +91,12 @@ module.exports = {
     port: 8086,
     historyApiFallback: {
       index: '/dist/index.html'
+    },
+    proxy: {
+      '/manage': {
+        target: 'http://admintest.happymmall.com',
+        changeOrigin: true
+      }
     }
   }
 };
