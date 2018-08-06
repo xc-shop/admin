@@ -37,6 +37,15 @@ class User {
             msg: '验证通过'
         }
     }
+    getUserList(pageNum) {
+        return _Util.request({
+            type: 'post',
+            url: '/manage/user/list.do',
+            data: {
+                pageNum: pageNum
+            }
+        })
+    }
 }
 
 export default User;
