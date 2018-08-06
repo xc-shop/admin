@@ -1,8 +1,17 @@
+/*
+* @Author: Jomsou
+* @Date:   2018.08.06 17:36
+*/  
+
 import Util from 'util/index.jsx';
 const _Util = new Util();
-
+/**
+ * 用户服务组件
+ * 
+ * @class User
+ */
 class User {
-    //用户登录
+    // 用户登录
     login(loginInfo){
         return _Util.request({
             type: 'post',
@@ -10,13 +19,14 @@ class User {
             data: loginInfo
         })
     }
+    // 退出登录
     logout(){
         return _Util.request({
             type: 'post',
             url: '/user/logout.do'
         })
     }
-    //检查登录接口的数据是否合法
+    // 检查登录接口的数据是否合法
     checkLoginInfo(loginInfo){
         let username = $.trim(loginInfo.username),
             password = $.trim(loginInfo.password);
@@ -37,6 +47,7 @@ class User {
             msg: '验证通过'
         }
     }
+    // 获取用户列表
     getUserList(pageNum) {
         return _Util.request({
             type: 'post',

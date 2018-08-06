@@ -1,8 +1,14 @@
+/*
+* @Author: Jomsou
+* @Date:   2018.08.06 17:36
+*/  
+
 .color-box {
     display: block;
     height: 160px;
     text-align: center;
     padding: 20px 0;
+    // 鼠标滑过的动画
     opacity: .9;
     transition: all .3s;
     &:hover {
@@ -11,6 +17,7 @@
         opacity: 1;
         transform: scale(1.02);
     }
+    // 鼠标聚焦链接的效果
     &:focus{
         text-decoration: none;
     }

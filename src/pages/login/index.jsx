@@ -1,3 +1,8 @@
+/*
+* @Author: Jomsou
+* @Date:   2018.08.06 17:36
+*/  
+
 import React from 'react';
 import Util from 'util/index.jsx';
 import User from 'service/user-service.jsx'
@@ -6,6 +11,12 @@ const _Util = new Util();
 const _user = new User();
 
 import './index.scss'
+/**
+ * 登录组件
+ * 
+ * @class Login
+ * @extends {React.Component}
+ */
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -15,10 +26,11 @@ class Login extends React.Component {
             redirect: _Util.getUrlParam('redirect')||'/'
         }
     }
+    // 组件将要挂载
     componentWillMount() {
         document.title = '登录 - 小菜水果店';
     }
-
+    // 监听用户框输入
     onUserInputChange(e){
         let inputValue = e.target.value, 
             inputName = e.target.name;
@@ -26,6 +38,7 @@ class Login extends React.Component {
             [inputName]: inputValue
         })
     }
+    // 回车提交登录
     onInputKeyUp(e){
         if(e.keyCode===13){
             this.onSubmit();

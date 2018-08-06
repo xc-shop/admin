@@ -1,5 +1,15 @@
-import React from 'react';
+/*
+* @Author: Jomsou
+* @Date:   2018.08.06 17:36
+*/  
 
+import React from 'react';
+/**
+ * 侧边导航组件
+ * 
+ * @class SideNav
+ * @extends {React.Component}
+ */
 class SideNav extends React.Component {
     constructor(props) {
         super(props);

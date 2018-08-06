@@ -1,3 +1,8 @@
+/*
+* @Author: Jomsou
+* @Date:   2018.08.06 17:36
+*/  
+
 import React from 'react';
 import{Link} from 'react-router-dom';
 import Util from 'util/index.jsx';
@@ -9,6 +14,12 @@ import Pagination from 'util/pagination/index.jsx'
 const _Util = new Util();
 const _user = new User();
 
+/**
+ * 用户列表组件
+ * 
+ * @class UserList
+ * @extends {React.Component}
+ */
 class UserList extends React.Component {
     constructor(props){
         super(props);
@@ -18,13 +29,17 @@ class UserList extends React.Component {
             firstLoading: true
         }
     }
+    // 组件挂载完成
     componentDidMount(){
         this.loadUserList();
     }
+    // 加载用户列表
     loadUserList(){
+        // 获取用户列表后异步操作数据
         _user.getUserList(this.state.pageNum).then(res=>{
             this.setState(res, ()=>{
                 this.setState({
+                    // 使得第一次加载时显示“正在加载中”
                     firstLoading: false
                 })
             })
@@ -35,6 +50,7 @@ class UserList extends React.Component {
             _Util.errorTips(errorMsg);
         });
     }
+    // 改变页码数字
     onPageNumChange(pageNum){
         this.setState({
             pageNum: pageNum

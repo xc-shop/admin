@@ -1,3 +1,8 @@
+/*
+* @Author: Jomsou
+* @Date:   2018.08.06 17:36
+*/  
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Util from 'util/index.jsx';
@@ -5,6 +10,12 @@ import User from 'service/user-service.jsx'
 
 const _Util = new Util();
 const _user = new User();
+/**
+ * 头部导航组件
+ * 
+ * @class TopNav
+ * @extends {React.Component}
+ */
 class TopNav extends React.Component {
     constructor(props) {
         super(props);
@@ -33,6 +44,7 @@ class TopNav extends React.Component {
                         <a className="dropdown-toggle" href="javascript:;">
                         <i className="fa fa-user fa-fw"></i> 
                         {
+                            // 通过判断username的状态
                             this.state.username
                             ?<span>欢迎，{this.state.username}</span>
                             :<span>欢迎您</span>

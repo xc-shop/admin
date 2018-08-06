@@ -1,3 +1,8 @@
+/*
+* @Author: Jomsou
+* @Date:   2018.08.06 17:36
+*/  
+
 import React from 'react';
 import{Link} from 'react-router-dom';
 import Util from 'util/index.jsx';
@@ -9,19 +14,27 @@ const _static = new Static();
 import './index.scss';
 
 import PageTitle from 'component/page-title/index.jsx';
-
+/**
+ * 首页组件
+ * 
+ * @class Home
+ * @extends {React.Component}
+ */
 class Home extends React.Component {
     constructor(props){
         super(props);
+        // 数据面板的状态管理
         this.state = {
             userCount: '-',
             productCount: '-',
             orderCount: '-'
         }
     }
+    // 挂载后
     componentDidMount(){
         this.loadCount();
     }
+    // 获取数据来显示
     loadCount(){
         _static.getHomeCount().then(res=>{
             this.setState(res);
