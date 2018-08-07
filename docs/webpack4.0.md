@@ -36,3 +36,62 @@ import ReactDOM from 'react-dom'//react-dom->把创建好的组件和虚拟dom�
 - 参数2：指定页面的目标容器
 
 4.加属性
+
+### 增加eslint做代码规范
+
+安装依赖
+
+```
+npm install eslint eslint-config-standard eslint-loader eslint-plugin-html eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard -D
+```
+配置.eslintrc
+
+```json
+{
+    "extends": "standard",
+    "plugins": [
+        "html"
+    ],
+    "parser": "babel-eslint"
+}
+```
+配置package.json的脚本：
+
+```json
+"lint": "eslint --ext .js --ext .jsx --ext .vue client/",
+"lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/",
+"precommit": "npm run lint-fix"
+```
+
+执行命令
+
+```
+npm run lint 
+or 
+npm run lint-fix
+```
+
+### webapck4升级
+
+1.webpack相关的插件就是带有webpack的，以及loader插件（边升级报错，边修改）;
+
+2.有些API的修改或者废弃，需要修改配置
+
+新增:
+
+1、mode属性，在config中一定要写`mode: process.env.NODE_ENV || 'production'`
+2、optimization属性
+
+```js
+optimization: {
+  splitChunks: {
+      chunks: 'all'
+  },
+  runtimeChunk: true
+}
+```
+
+废弃：
+- 1、webpack.NoEmitOnErrorsPlugin()
+- 2、webpack.optimize.CommonsChunkPlugin()
+
