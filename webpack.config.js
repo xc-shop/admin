@@ -35,10 +35,10 @@ module.exports = {
     //独立css
     new ExtractTextPlugin("css/[name].css"),
     //提出公共模块
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
-      filename: 'js/base.js'
-    })
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'common',
+    //   filename: 'js/base.js'
+    // })
   ],
   module: {
     rules: [{
@@ -91,6 +91,12 @@ module.exports = {
         }]
       },
     ]
+  },
+  optimization: {
+      splitChunks: {
+          chunks: 'all'
+      },
+      runtimeChunk: true
   },
   devServer: {
     open: true,
