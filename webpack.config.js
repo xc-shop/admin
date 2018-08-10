@@ -1,7 +1,7 @@
 /*
-* @Author: Jomsou
-* @Date:   2018.08.06 17:36
-*/  
+ * @Author: Jomsou
+ * @Date:   2018.08.06 17:36
+ */
 
 const path = require('path');
 const webpack = require('webpack');
@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+  mode: process.env.NODE_ENV || 'production',
   //入口
   entry: './src/app.jsx',
   //输出
@@ -93,10 +94,10 @@ module.exports = {
     ]
   },
   optimization: {
-      splitChunks: {
-          chunks: 'all'
-      },
-      runtimeChunk: true
+    splitChunks: {
+      chunks: 'all'
+    },
+    runtimeChunk: true
   },
   devServer: {
     open: true,
@@ -104,14 +105,14 @@ module.exports = {
     historyApiFallback: {
       index: '/dist/index.html'
     },
-    proxy : {
-      '/manage' : {
-          target: 'http://admintest.happymmall.com',
-          changeOrigin : true
+    proxy: {
+      '/manage': {
+        target: 'http://admintest.happymmall.com',
+        changeOrigin: true
       },
-      '/user/logout.do' : {
-          target: 'http://admintest.happymmall.com',
-          changeOrigin : true
+      '/user/logout.do': {
+        target: 'http://admintest.happymmall.com',
+        changeOrigin: true
       }
     }
   }

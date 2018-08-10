@@ -1,7 +1,11 @@
 {
-    "extends": "standard",
+    "extends": ["plugin:prettier/recommended","standard"],
     "plugins": [
-        "html"
+        "html",
+        "prettier"
     ],
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "rules": {
+      "prettier/prettier": "error"
+    }
 }
