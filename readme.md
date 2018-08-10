@@ -1,5 +1,9 @@
 ## React 16+React-Router4 从零打造企业级电商后台管理系统
 
+### 技术栈
+
+React16 + React-router + webpack + ES6 + sass + Boostrap
+
 ### 开发过程
 
 #### 构建初始化
@@ -140,7 +144,7 @@ yarn dist
 
 - [] 登录/退出
 
-### 项目目录
+# 项目布局
 
 
 
