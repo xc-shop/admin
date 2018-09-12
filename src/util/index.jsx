@@ -1,10 +1,10 @@
 /*
-* @Author: Jomsou
+* @Author: Zenquan
 * @Date:   2018.08.06 17:36
-*/  
+*/
 /**
  * 工具接口插件
- * 
+ *
  * @class Util
  */
 class Util {

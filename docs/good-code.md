@@ -23,9 +23,9 @@
 
 ```jsx
 /*
-* @Author: Jomsou
+* @Author: Zenquan
 * @Date:   2018.08.06 17:36
-*/  
+*/
 
 //引进所需要的包
 import React from 'react';
@@ -34,12 +34,12 @@ import{Link} from 'react-router-dom';
 //引进组件
 import PageTitle from 'component/page-title/index.jsx';
 
-//引进样式 
+//引进样式
 import 'xx/index.scss'
 
 /**
  * 错误处理组件
- * 
+ *
  * @class Error
  * @extends {React.Component}
  */

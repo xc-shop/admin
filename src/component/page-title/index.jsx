@@ -1,12 +1,12 @@
 /*
-* @Author: Jomsou
+* @Author: Zenquan
 * @Date:   2018.08.06 17:36
-*/  
+*/
 
 import React from 'react';
 /**
  * 页面标题组件
- * 
+ *
  * @class PageTitle
  * @extends {React.Component}
  */

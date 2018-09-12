@@ -1,10 +1,10 @@
 /*
-* @Author: Jomsou
+* @Author: Zenquan
 * @Date:   2018.08.06 17:36
-*/  
+*/
 
 import React from 'react';
-import{Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Util from 'util/index.jsx';
 import Static from 'service/static-service.jsx'
 
@@ -16,7 +16,7 @@ import './index.scss';
 import PageTitle from 'component/page-title/index.jsx';
 /**
  * 首页组件
- * 
+ *
  * @class Home
  * @extends {React.Component}
  */

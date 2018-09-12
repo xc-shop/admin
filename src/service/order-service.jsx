@@ -5,10 +5,10 @@
 
 import Util from "util/index.jsx";
 
-const _util = new Util();
+const _Util = new Util()
 
-class ProductList {
+class Order {
 
 }
 
-export default ProductList;
+export default Order;

@@ -20,17 +20,17 @@ let jsx = (
 ```
 变量的使用和条件判断
 ```javascript
-let name = "Jomsou";
+let name = "Zenquan";
 let flag = false;
 let jsx = (
   <div>
-    { flag ? <p> I am {name} </p> : <p> I am not {name}</p>} 
+    { flag ? <p> I am {name} </p> : <p> I am not {name}</p>}
   </div>
 );
 ```
 数组循环
 ```js
-let names = ['jomsou', 'marry', 'james']
+let names = ['Zenquan', 'marry', 'james']
 let jsx = (
   <div>
     { names.map((name, index)=><p key={index}>Hello, I am {name}</p>)}
@@ -41,12 +41,12 @@ let jsx = (
 ```js
 ES5
 function  Component() {
-  return <h1>I am Jomsou</h1>
+  return <h1>I am Zenquan</h1>
 }
 ES6
 class ES6component extends React.Component{
   render(){
-    return <h1>I am Jomsou</h1>
+    return <h1>I am Zenquan</h1>
   }
 }
 ReactDOM.render(
@@ -66,14 +66,14 @@ class ES6component extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      name: 'Jomsou'
+      name: 'Zenquan'
     }
   }
   render(){
     //用于异步操作
     setTimeout(() => {
       this.setState({
-        name: 'Jomsou Can'
+        name: 'Zenquan Can'
       })
     }, 2000);
     return <h1>I am {this.state.name}</h1>
@@ -99,7 +99,7 @@ class ES6component extends React.Component{
 }
 ReactDOM.render(
   <div>
-    <ES6component name="Jomsou STC"/>
+    <ES6component name="Zenquan STC"/>
   </div>,
   document.getElementById('app')
 );
@@ -229,7 +229,7 @@ class Father extends React.Component {
   render(){
     return (
       <div style={{background: this.state.bgColor}}>
-        <Child bgColor={this.state.bgColor} onChangeColor={color=>this.onChangeColor(color)}/> 
+        <Child bgColor={this.state.bgColor} onChangeColor={color=>this.onChangeColor(color)}/>
       </div>
     )
   }
@@ -292,8 +292,8 @@ class Father extends React.Component {
   render(){
     return (
       <div>
-        <Child1 changeChild2Color={(color)=>this.onChangeChild2Color(color)}/> 
-        <Child2 bgColor={this.state.bgColor}/> 
+        <Child1 changeChild2Color={(color)=>this.onChangeChild2Color(color)}/>
+        <Child2 bgColor={this.state.bgColor}/>
       </div>
     )
   }
@@ -354,7 +354,7 @@ window.loaction = '#hash';
 window.onhashchange = function(){
   console.log('current hash:', window.location.hash)
 }
-``` 
+```
 - H5 Router
 >包括页面跟hash路由
 ```js

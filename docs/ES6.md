@@ -7,7 +7,7 @@
 ```javascript
 for(let i=0;i<5;i++){
     setTimeOut(()=>{
-          console.log(i);//0-4  
+          console.log(i);//0-4
     }, 3000)
 }
 ```
@@ -61,7 +61,7 @@ console.log(z);//2
 
 普通函数
 - 属于谁，谁调用，指向谁，故指向obj
-区别： 
+区别：
 ```javascript
 var obj = {
     a: function(){
@@ -112,7 +112,7 @@ console.log(arrowFn.prototype);//undefined
 
 基本用法
 ```javascript
-let name = 'Jomsou'
+let name = 'Zenquan'
 let str = `
 <div>
     <h1 class="title">${name}</h1>
@@ -155,12 +155,12 @@ class Man extemds Person {
     }
 }
 ```
-#### Object 
+#### Object
 Object.keys()：返回对象的key值数组
 Object.assign(): 整合，浅拷贝
 ```javascript
 //以前
-var name = 'Jomsou';
+var name = 'Zenquan';
 var age = 23;
 var obj1 = {
     name: name,
@@ -170,7 +170,7 @@ var obj1 = {
     }
 }
 obj1.getName();
-let name = 'Jomsou';
+let name = 'Zenquan';
 let age = 23;
 let obj = {
     name,
@@ -294,7 +294,7 @@ delete->删除，返回值是布尔值  如果里面有这一项删除成功true
 
 has->判断有没有此项，返回布尔值
 ```js
-s1.add('jomsou');
+s1.add('Zenquan');
 s1.add(1);
 console.log(s1);
 var b = s1.delete(1);
@@ -316,11 +316,11 @@ s1.forEach((item, value, entries)=>{
 })
 ```
 
-keys->遍历接口  
+keys->遍历接口
 
-key： 仍然是value 
+key： 仍然是value
 
-values 
+values
 
 entries->[item, val]
 

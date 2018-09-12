@@ -1,26 +1,26 @@
 /*
-* @Author: Jomsou
+* @Author: Zenquan
 * @Date:   2018.08.06 17:36
 */
 
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react'
+import ReactDOM from 'react-dom'
 import {
   BrowserRouter as Router,
   Route,
   Link,
   Switch,
   Redirect
-} from "react-router-dom";
+} from 'react-router-dom'
 
-import Layout from "component/layout/index.jsx";
-import Home from "pages/home/index.jsx";
-import ProductRouter from "pages/product/router.jsx";
-import Login from "pages/login/index.jsx";
-import OrderList from "pages/order/index.jsx";
-import OrderDetail from "pages/order/detail.jsx";
-import UserList from "pages/user/index.jsx";
-import ErrorPage from "pages/error/index.jsx";
+import Layout from 'component/layout/index.jsx'
+import Home from 'pages/home/index.jsx'
+import ProductRouter from 'pages/product/router.jsx'
+import Login from 'pages/login/index.jsx'
+import OrderList from 'pages/order/index.jsx'
+import OrderDetail from 'pages/order/detail.jsx'
+import UserList from 'pages/user/index.jsx'
+import ErrorPage from 'pages/error/index.jsx'
 /**
  * 入口组件
  *
@@ -28,7 +28,7 @@ import ErrorPage from "pages/error/index.jsx";
  * @extends {React.Component}
  */
 class App extends React.Component {
-  render() {
+  render () {
     // 路由布局
     let LayoutRouter = (
       <Layout>
@@ -44,7 +44,7 @@ class App extends React.Component {
           <Route component={ErrorPage} />
         </Switch>
       </Layout>
-    );
+    )
     return (
       <Router>
         {/* 路由选择跳转 */}
@@ -53,8 +53,8 @@ class App extends React.Component {
           <Route path="/" render={props => LayoutRouter} />
         </Switch>
       </Router>
-    );
+    )
   }
 }
 // DOM树渲染
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'))

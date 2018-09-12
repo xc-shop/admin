@@ -19,8 +19,8 @@ import ReactDOM from 'react-dom';
 // }
 // let jsx = <div style={style}>jsx...</div>;
 // import './index.scss';
-// let name = "Jomsou";
-// let names = ['jomsou', 'marry', 'james']
+// let name = "Zenquan";
+// let names = ['Zenquan', 'marry', 'james']
 // let flag = false;
 // let jsx = (
 //   <div className="jsx">
@@ -30,20 +30,20 @@ import ReactDOM from 'react-dom';
 // );
 //ES5
 // function  Component() {
-//   return <h1>I am Jomsou</h1>
+//   return <h1>I am Zenquan</h1>
 // }
 //ES6
 // class ES6component extends React.Component{
 //   constructor(props){
 //     super(props);
 //     // this.state = {
-//     //   name: 'Jomsou'
+//     //   name: 'Zenquan'
 //     // }
 //   }
 //   render(){
 //     // setTimeout(() => {
 //     //   this.setState({
-//     //     name: 'Jomsou Can'
+//     //     name: 'Zenquan Can'
 //     //   })
 //     // }, 2000);
 //     return <h1>I am {this.props.name}</h1>
@@ -52,7 +52,7 @@ import ReactDOM from 'react-dom';
 // ReactDOM.render(
 //   <div>
 //     {/* <Component/> */}
-//     <ES6component name="Jomsou STC"/>
+//     <ES6component name="Zenquan STC"/>
 //   </div>,
 //   document.getElementById('app')
 // );

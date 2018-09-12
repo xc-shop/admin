@@ -1,19 +1,19 @@
 /*
-* @Author: Jomsou
+* @Author: Zenquan
 * @Date:   2018.08.06 20:48
 */
 
-import React from "react";
-import  { Link } from "react-router-dom";
-import Util from "util/index.jsx";
-import Product from "service/product-service.jsx";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Util from 'util/index.jsx'
+import Product from 'service/product-service.jsx'
 
-import PageTitle from "component/page-title/index.jsx";
-import LitSearch from "./index-list-search.jsx";
-import TableList from "util/table-list/index.jsx";
-import Pagination from "util/pagination/index.jsx";
+import PageTitle from 'component/page-title/index.jsx'
+import LitSearch from './index-list-search.jsx'
+import TableList from 'util/table-list/index.jsx'
+import Pagination from 'util/pagination/index.jsx'
 
-import "./index.scss";
+import './index.scss'
 
 const _Util = new Util()
 const _product = new Product()
@@ -27,7 +27,7 @@ const _product = new Product()
 class ProductList extends React.Component {
   constructor (props) {
     super(props)
-        this.state = {
+    this.state = {
       list: [],
       pageNum: 1,
       listType: 'list'
@@ -36,46 +36,46 @@ class ProductList extends React.Component {
   // 组件挂载完成
   componentDidMount () {
     this.loadProductList()
-    }
+  }
   // 加载商品列表
   loadProductList () {
     let listParam = {}
-        listParam.listType = this.state.listType
-        listParam.pageNum = this.state.pageNum
+    listParam.listType = this.state.listType
+    listParam.pageNum = this.state.pageNum
 
-        // 如果是搜索的话，需要传入类型和关键字
-        if (this.state.listType === 'search') {
+    // 如果是搜索的话，需要传入类型和关键字
+    if (this.state.listType === 'search') {
       listParam.searchType = this.state.searchType
-            listParam.keyword = this.state.keyword
-        }
+      listParam.keyword = this.state.keyword
+    }
     // 获取商品列表后异步操作数据
     _product.getProductList(listParam).then(res => {
       this.setState(res)
-        }, errorMsg => {
+    }, errorMsg => {
       this.setState({
-          list: []
+        list: []
       })
-            _Util.errorTips(errorMsg)
-        })
-    }
+      _Util.errorTips(errorMsg)
+    })
+  }
 
   // 改变页码数字
   onPageNumChange (pageNum) {
     this.setState({
       pageNum: pageNum
     }, () => {
-        this.loadProductList()
-        })
-      }
+      this.loadProductList()
+    })
+  }
   render () {
-    let TableHeaders = [
+    let tableHeads = [
       {name: '商品ID', width: '10%'},
       {name: '商品信息', width: '50%'},
       {name: '价格', width: '10%'},
       {name: '状态', width: '15%'},
       {name: '操作', width: '15%'}
     ]
-        return (
+    return (
       <div id="page-wrapper">
         <PageTitle title="商品列表">
           <div className="page-header-right">
@@ -85,6 +85,31 @@ class ProductList extends React.Component {
             </Link>
           </div>
         </PageTitle>
+        <TableList tableHeads={tableHeads}>
+          {
+            this.state.list.map((product, index) => {
+              return (
+                <tr key={index}>
+                  <td>{product.id}</td>
+                  <td>
+                    <p>{product.name}</p>
+                    <p>{product.subtitle}</p>
+                  </td>
+                  <td>￥{product.price}</td>
+                  <td>
+                    <p>{product.status === 1 ? '在售' : '已下架'}</p>
+                    <button className="btn btn-xs btn-warning"
+                      onClick={(e) => { this.onSetProductStatus(e, product.id, product.status) }}>{product.status == 1 ? '下架' : '上架'}</button>
+                  </td>
+                  <td>
+                    <Link className="opear" to={`/product/detail/${product.id}`}>详情</Link>
+                    <Link className="opear" to={`/product/save/${product.id}`}>编辑</Link>
+                  </td>
+                </tr>
+              )
+            })
+          }
+        </TableList>
         <Pagination current={this.state.pageNum}
           total={this.state.total}
           onChange={pageNum => this.onPageNumChange(pageNum)}/>
@@ -94,4 +119,3 @@ class ProductList extends React.Component {
 }
 
 export default ProductList
-
