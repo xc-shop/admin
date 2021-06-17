@@ -1,23 +1,27 @@
-import { makeAutoObservable } from "mobx";
+import { createContext, useContext } from 'react'
+import { create } from 'mobx-persist'
+import loginStore, { LoginStore } from './login'
 
-class Timer {
-  secondsPassed = 0
+const hydrate = create({
+  storage: localStorage,
+  jsonify: true
+})
 
+interface IStore {
+  loginStore: LoginStore
+}
+class Store implements IStore {
+  public loginStore: LoginStore
   constructor() {
-    makeAutoObservable(this);
-  }
-
-  increase() {
-    this.secondsPassed += 1;
-  }
-
-  decrease() {
-    this.secondsPassed -= 1;
-  }
-
-  reset() {
-    this.secondsPassed = 0;
+    this.loginStore = loginStore
+    hydrate('userInfo', this.loginStore)
   }
 }
 
-export default new Timer();
+export const store =  new Store()
+
+export const StoreContext = createContext(store)
+
+export const useStore = () => {
+  return useContext(StoreContext)
+}

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 const NotFound: FC = (() => {
   return (
@@ -8,4 +8,4 @@ const NotFound: FC = (() => {
   );
 });
 
-export default NotFound;
+export default memo(NotFound);

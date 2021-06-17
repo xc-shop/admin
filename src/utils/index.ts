@@ -1,5 +1,7 @@
 import history from './/history';
+import { HomeAPI } from './request';
 
 export {
-  history
+  history,
+  HomeAPI,
 };

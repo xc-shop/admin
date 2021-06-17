@@ -1,3 +1,12 @@
 declare module 'utils';
 declare module 'stores';
+declare module 'services';
 declare module 'number-random';
+declare module '*.svg';
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.jpeg';
+declare module '*.gif';
+declare module '*.bmp';
+declare module '*.tiff';
+declare module '*.less';
