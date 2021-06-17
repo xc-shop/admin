@@ -27,3 +27,4 @@ yarn-error.log*
 .tsconfig.json
 .vscode
 /server/node_modules
+/server/dist
