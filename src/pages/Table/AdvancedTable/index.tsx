@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function BasicTable() {
+export default function AdvancedTable() {
   return (
     <div>
-      BasicTable
+      AdvancedTable
     </div>
   )
 }

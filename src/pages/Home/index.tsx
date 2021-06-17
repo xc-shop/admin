@@ -14,6 +14,7 @@ import { UserInfoType } from 'stores/login';
 import style from './index.module.less'
 import classNames from 'classnames';
 import { home } from 'services';
+import AppRouter from '../../router';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -126,7 +127,7 @@ const Home: FC<IHome> = ({history}: IHome) => {
               (location.pathname === '' || location.pathname === '/')
                 ? (
                   <p style={{ fontSize: 30, fontWeight: 500, margin: 20, }}>🐕 🐩 🐈 &nbsp;Welcome to React Admin!</p>
-                ) : WithRoute(currentRoute)
+                ) : <AppRouter/>
             }
           </Content>
         </Layout>
