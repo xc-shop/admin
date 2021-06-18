@@ -1,9 +1,8 @@
-import React, { useState, memo } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import React, { memo, FC } from "react";
+import { Form, Input, Button, Checkbox, message } from "antd";
 import classNames from "classnames";
 import { home } from "services";
 import { useStore } from 'stores'
-import { history } from "utils";
 import style from './index.module.less';
 
 const layout = {
@@ -15,10 +14,18 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-const Login = () => {
+interface ILogin {
+  history: any
+}
+
+const Login: FC<ILogin> = ({history}: ILogin) => {
 
   const { loginStore } = useStore()
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: {
+    userName: string,
+    passWord: string,
+    remember: boolean
+  }) => {
     const data = await home.login(values)
     if (data.ret === '0') {
       const { roleType, userName, avatar } = data.data
@@ -27,11 +34,14 @@ const Login = () => {
         userName,
         avatar
       });
+      await loginStore.toggleLogin(true, {userName})
       await history.push('/');
+    } else {
+      message.error(`${data.msg}, 用户名和密码不符`)
     }
   };
 
-  const onFinishFailed = (errorInfo: any) => {
+  const onFinishFailed = (errorInfo: unknown) => {
     console.log("Failed:", errorInfo);
   };
 

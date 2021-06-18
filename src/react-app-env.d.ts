@@ -1,6 +1,8 @@
 declare module 'utils';
 declare module 'stores';
 declare module 'services';
+declare module 'components/*';
+declare module '@types/*';
 declare module 'number-random';
 declare module '*.svg';
 declare module '*.png';

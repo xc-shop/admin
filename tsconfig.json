@@ -27,6 +27,9 @@
       "stores/*": [
         "src/stores/*"
       ],
+      "components": [
+        "src/components/*"
+      ]
     },
   },
   "exclude": [

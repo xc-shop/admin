@@ -14,14 +14,14 @@ const basePlugins = [
 
 const devPlugins = [
   new HtmlWebpackPlugin({
-    title: 'Hello react + ts',
+    title: 'reactAmdmin 后台系统方案',
     template: resolve('public/index.html')
   }),
 ];
 
 const prodPlugins = [
   new HtmlWebpackPlugin({
-    title: 'Hello react + ts',
+    title: 'reactAmdmin 后台系统方案',
     template: resolve('public/index.html'),
     env: 'production',
     minify: true,

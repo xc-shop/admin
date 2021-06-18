@@ -1,17 +1,23 @@
 import React, { lazy, Component, Suspense } from "react";
 import {
   withRouter,
-  Router,
+  BrowserRouter,
+  HashRouter,
   Switch,
-  Route,
   RouteComponentProps,
 } from "react-router-dom";
+import { StaticContext } from "react-router";
 import { Spin, Space } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { history } from "utils";
 import random from "number-random";
+import CommonRoute from 'components/CommonRoute'
 
-const routes: Array<{ component: any; path?: string }> = [
+const routes: Array<{
+  component:
+    | React.ComponentType<any>
+    | React.ComponentType<RouteComponentProps<any, StaticContext, unknown>>;
+  path?: string
+}> = [
   {
     component: lazy(() => import(/* webpackChunkName: "home" */ "pages/Home")),
     path: "/",
@@ -56,11 +62,18 @@ const routes: Array<{ component: any; path?: string }> = [
   },
 ];
 
+const isProd = process.env.NODE_ENV === 'production';
+(window as any).$origin = `${window.location.origin}${isProd ? '' : '/#'}`;
+
+const Router: any = !isProd
+  ? HashRouter
+  : BrowserRouter;
+
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 class AppRouter extends Component<RouteComponentProps> {
   render() {
     return (
-      <Router history={history}>
+      <Router>
         <Suspense
           fallback={
             <Space size="large" className="loading all-center">
@@ -71,16 +84,20 @@ class AppRouter extends Component<RouteComponentProps> {
           <Switch>
             {routes &&
               routes.map(
-                (route: { component: any; path?: string }, index: number) => {
+                (route: {
+                  component:
+                  | React.ComponentType<any>
+                  | React.ComponentType<RouteComponentProps<any, StaticContext, unknown>>;
+                  path?: string }) => {
                   const key = random(100, 999),
                     { component, path } = route;
                   return (
-                    <Route
+                    <CommonRoute
                       path={path}
                       key={key}
-                      exact={!index ? true : false}
+                      exact
                       component={component}
-                    ></Route>
+                    />
                   );
                 }
               )}
