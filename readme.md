@@ -1,6 +1,6 @@
 # react-admin
 
-> react + antd的管理后台系统方案
+> React 17+React-Router4 从零打造企业级电商后台管理系统
 
 ## 后端接口
 - login
