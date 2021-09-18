@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { Route, Redirect, RouteComponentProps } from "react-router-dom";
 import { StaticContext } from "react-router";
-import { isAuthenticated } from "utils/session";
+import { isAuthenticated } from "utils";
 
 const CommonRoute = ({
   component: MyComponent,
@@ -15,7 +15,7 @@ const CommonRoute = ({
   <Route
     {...rest}
     render={(props) =>
-      !!isAuthenticated() ? (
+      isAuthenticated() ? (
         <MyComponent {...props} />
       ) : (
         <Redirect
@@ -29,4 +29,4 @@ const CommonRoute = ({
   />
 );
 
-export default CommonRoute;
+export default memo(CommonRoute);

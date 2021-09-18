@@ -1,9 +1,15 @@
-import history from './/history';
 import { HomeAPI } from './request';
-import * as session from './session';
+import {
+  isAuthenticated,
+  authenticateSuccess,
+  logout
+} from './session';
+import i18n from './i18n';
 
 export {
-  history,
   HomeAPI,
-  session
+  isAuthenticated,
+  authenticateSuccess,
+  logout,
+  i18n
 };

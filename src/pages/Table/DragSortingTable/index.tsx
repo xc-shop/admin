@@ -3,18 +3,25 @@ import { Table } from 'antd';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import update from 'immutability-helper';
+import { useChangeLang } from 'hooks';
 
 const type = 'DragableBodyRow';
 import CommonBreadcrumb from 'components/CommonBreadcrumb'
 
 interface DragableBodyRowProps {
   index: number,
-  moveRow: Function,
+  moveRow: () => void,
   className: string,
   style: object
 }
 
-const DragableBodyRow: FC<DragableBodyRowProps> = ({ index, moveRow, className, style, ...restProps }) => {
+const DragableBodyRow: FC<DragableBodyRowProps> = ({
+  index,
+  moveRow,
+  className,
+  style,
+  ...restProps
+}: DragableBodyRowProps) => {
   const ref = useRef<HTMLTableRowElement | null>(null);
   const [{ isOver, dropClassName }, drop] = useDrop({
     accept: type,
@@ -29,6 +36,7 @@ const DragableBodyRow: FC<DragableBodyRowProps> = ({ index, moveRow, className, 
       };
     },
     drop: (item: {index: number}) => {
+      // @ts-ignore
       moveRow(item.index, index);
     },
   });
@@ -91,6 +99,8 @@ const DragSortingTable: React.FC = () => {
     },
   ]);
 
+  const { t } = useChangeLang();
+
   const components = {
     body: {
       row: DragableBodyRow,
@@ -114,7 +124,10 @@ const DragSortingTable: React.FC = () => {
 
   return (
     <>
-      <CommonBreadcrumb arr={['表格', '拖拽排序表格']}/>
+      <CommonBreadcrumb arr={[
+          t('table.dragSortingTable.menu'),
+          t('table.dragSortingTable.subMenu')
+        ]}/>
       <DndProvider backend={HTML5Backend}>
         <Table
           columns={columns}

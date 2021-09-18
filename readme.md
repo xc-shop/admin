@@ -1,68 +1,60 @@
-# react-admin-template
+<div align="center">
+  <img src="./public/logo.png" style="width: 128px; height: 128px;">
+  <h1>react-admin-template</h1>
+  <h3>react + antd + vite2/webpack5 的管理后台系统方案</h3>
+</div>
+<br>
+<br>
 
-> react + antd的管理后台系统方案
+## 预览
+[预览地址](https://react-admin-template.vercel.app/#/login)
 
 ## 账号数据
-```
-现在采用mock数据, 都是模拟数据
+- 管理员 admin admin
+- 运营 zenquan zenquan
 
-管理员
-账号：admin
-密码：admin
+## 技术栈
+react^17 + react-router-dom^4 + less + css modules + antd^4 + axios + mobx + echarts + react-i18next
 
-运营
-账号：zenquan
-密码：zenquan
-```
-## 后端接口
-- login
- ```js
-  {
-    ret: '0',
-    msg: '成功',
-    data: {
-      permissions: [
-        'login',
-        ...
-      ],
-      role: '系统管理员',
-      roleType: 1,   // 1 管理员 2 运营人员 0 游客，
-      uid: 1,
-      userName: '系统管理员',
-      avatar: ''
-    }
-  }
- ```
-- menus
+## 开始
+```bash
+# git clone
+git clone https://github.com/zenquan/react-admin-template.git
+or
+git clone -b <branch> https://github.com/zenquan/react-admin-template.git
 
-```js
-// roleType = 1
-{
-  ret: '0',
-  msg: '成功',
-  menus: [
-    {
-      component: '表格',
-      path: '/table',
-      key: '/table',
-      sub: [{
-          component: '基本表格',
-          path: '/table/basicTable',
-          key: '/table/basicTable'
-        },
-        {
-          component: '高级表格',
-          path: '/table/advancedTable',
-          key: '/table/advancedTable'
-        },
-        {
-          component: '异步表格',
-          path: '/table/asynchronousTable',
-          key: '/table/asynchronousTable'
-        },
-      ]
-    }
-  ]
-}
+# install
+npm install
+
+# start or dev
+master or master-i18n -> npm run start
+vite or vite-i18n -> npm run dev
+
+# build
+npm run build
 ```
- ```
+## 功能、组件的封装
+- [x] 系统首页
+- [x] 表格
+  - [x] 可编辑行表格
+  - [x] 拖拽排序表格
+- [x] 图表
+  - [x] 折线图
+  - [x] 饼图
+- [x] 组件
+  - [x] 富文本编辑器
+  - [x] Markdown
+  - [x] JSON编辑器
+- [x] Excel
+  - [x] 导出excel
+- [x] 404页
+- [x] 国际化
+
+## 分支
+- webpack5:【master分支】
+- webpack5国际化: 【master-i18n分支】
+- vite: 【vite分支】
+- vite国际化: 【vite-i18n分支】
+
+## TODO
+- [ ] 适配移动端

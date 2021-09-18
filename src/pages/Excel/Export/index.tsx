@@ -3,6 +3,7 @@ import { Table, Divider, Button, message } from 'antd';
 import CustomBreadcrumb from 'components/CommonBreadcrumb'
 import XLSX from 'xlsx'
 import dayjs from 'dayjs';
+import { useChangeLang } from 'hooks';
 
 const columns = [
   {
@@ -56,6 +57,7 @@ const data: DataType[] = [
 
 const ExcelExport = () => {
   const [xls, setXls] = useState<DataType[]>([])
+  const { t } = useChangeLang();
   // rowSelection object indicates the need for row selection
   const rowSelection = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => {
@@ -73,10 +75,10 @@ const ExcelExport = () => {
       return
     }
     /* 创建worksheet */
-    var ws = XLSX.utils.json_to_sheet(xls);
+    const ws = XLSX.utils.json_to_sheet(xls);
 
     /* 新建空workbook，然后加入worksheet */
-    var wb = XLSX.utils.book_new();
+    const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "People");
 
     /* 生成xlsx文件 */
@@ -85,7 +87,10 @@ const ExcelExport = () => {
 
   return (
     <div>
-      <CustomBreadcrumb arr={['Excel', '导出excel']}/>
+      <CustomBreadcrumb arr={[
+        t('excel.exportExcel.menu'),
+        t('excel.exportExcel.subMenu')
+      ]}/>
       <Button onClick={exportExcel}>导出excel</Button>
       <Divider />
 

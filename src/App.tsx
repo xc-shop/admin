@@ -3,7 +3,6 @@ import { Route, Switch, HashRouter } from 'react-router-dom';
 import { Spin, Space } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import './App.css';
-import { hot } from 'react-hot-loader/root';
 import { Provider } from 'mobx-react';
 import { store, StoreContext } from 'stores';
 import Login from './pages/Login';
@@ -17,7 +16,7 @@ const App: FC = () => {
       <StoreContext.Provider value={store}>
         <HashRouter>
           <Suspense fallback={
-            <Space size="large" className="loading all-center">
+            <Space size="large" className="loading flex-all-center">
               <Spin indicator={antIcon}
                 size="large"
                 tip="加载中"/>
@@ -34,4 +33,4 @@ const App: FC = () => {
   );
 };
 
-export default hot(App);
+export default App;

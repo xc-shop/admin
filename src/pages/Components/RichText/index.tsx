@@ -3,17 +3,23 @@ import { Spin, Space } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Editor } from '@tinymce/tinymce-react';
 import CommonBreadcrumb from 'components/CommonBreadcrumb'
+import { useChangeLang } from 'hooks';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24, }} spin />;
 
 export default function RichText() {
   const [text, setText] = useState('');
   const [value, setValue] = useState('<p>The quick brown fox jumps over the lazy dog</p>');
+  const { t } = useChangeLang();
+
   return (
     <div>
-      <CommonBreadcrumb arr={['表格', '富文本编辑器']}/>
+      <CommonBreadcrumb arr={[
+        t('components.richText.menu'),
+        t('components.richText.subMenu')
+      ]}/>
       <Suspense fallback={
-        <Space size="large" className="loading all-center">
+        <Space size="large" className="loading flex-all-center">
           <Spin indicator={antIcon}
             size="large"
             tip="加载中"/>
